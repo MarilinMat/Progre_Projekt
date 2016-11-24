@@ -1,1 +1,1 @@
-print('idk man')
+import pygame
