@@ -2,7 +2,7 @@ import pygame
 pygame.init()
 ekraani_suurus = pygame.display.set_mode((900, 600))
 pygame.display.set_caption("Memory")
-taust= pygame.image.load("pildid/taustaks.jpg")
+taust= pygame.image.load("pildid/taust.jpg")
 
 ekraani_suurus.fill((0,0,0))
 ekraani_suurus.blit(taust, (0, 0))
