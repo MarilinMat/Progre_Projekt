@@ -138,3 +138,4 @@ class lauamäng(object):
         #jätka_mäng = key.font.render('Klikka kuskile',True, (255,255,255))
         #key.ekraan.blit(skoor,(230,35))
         #key.ekraan.blit(jätka_mäng,(90,515))
+        
