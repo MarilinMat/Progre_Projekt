@@ -140,6 +140,7 @@ class lauamäng(object):
         #key.ekraan.blit(skoor,(230,35))
         #key.ekraan.blit(jätka_mäng,(90,515))
 
+        
     def valik(key,hiirx,hiiry):
         if((hiiry <= 190 ) and (hiiry >= 100)):
             if (hiirx >= 112) and (hiirx <= 227):
