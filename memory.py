@@ -1,10 +1,14 @@
 import pygame
 
 pygame.init()
-ekraani_suurus = pygame.display.set_mode((900, 600))
+suurus= (900,600)
+ekraan = pygame.display.set_mode(suurus)
+aeg = pygame.time.Clock()
 pygame.display.set_caption("Memory")
 
-taust= pygame.image.load("pildid/taust.jpg")
+
+taust= pygame.transform.scale((pygame.image.load("pildid/taust.jpg")), suurus)
+kaart = pygame.transform.scale((pygame.image.load("pildid/kaart.jpg")), (115,90))
 pilt1 = pygame.image.load("pildid/pilt1.png")
 pilt2 = pygame.image.load("pildid/pilt2.png")
 pilt3 = pygame.image.load("pildid/pilt3.png")
@@ -22,8 +26,11 @@ pilt14 = pygame.image.load("pildid/pilt14.png")
 pilt15 = pygame.image.load("pildid/pilt15.png")
 pilt16 = pygame.image.load("pildid/pilt16.png")
 
-ekraani_suurus.fill((0,0,0))
-ekraani_suurus.blit(taust, (0, 0))
+pildid = [pilt1, pilt2, pilt3, pilt4, pilt5, pilt6, pilt7, pilt8,
+          pilt9, pilt10, pilt11, pilt12, pilt13, pilt14, pilt15, pilt16]
+
+ekraan.fill((0,0,0))
+ekraan.blit(taust, (0, 0))
 pygame.display.flip()
 
 while True:
