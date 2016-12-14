@@ -1,7 +1,6 @@
 import random, pygame, sys, os
 from pygame.locals import *
 
-
 class lauamäng(object):
     def __init__(key):
         pygame.init()
