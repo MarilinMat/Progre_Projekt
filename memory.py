@@ -139,7 +139,6 @@ class lauamäng(object):
         #jätka_mäng = key.font.render('Klikka kuskile',True, (255,255,255))
         #key.ekraan.blit(skoor,(230,35))
         #key.ekraan.blit(jätka_mäng,(90,515))
-<<<<<<< HEAD
 
     def valik(key,hiirx,hiiry):
         if((hiiry <= 190 ) and (hiiry >= 100)):
@@ -287,6 +286,7 @@ def main():
             mängulaud.mängupilt()
             pygame.display.update()
             inGame = mängulaud.mäng_läbi()
+            clock.wait(1500)
             mängulaud.valge_taust()
             mängulaud.uus_mängudata()
             arvan = 0
@@ -294,10 +294,5 @@ def main():
         pygame.display.flip()
         clock.wait(70)
         
-
-
 if __name__ == '__main__':
     main()
-=======
-        
->>>>>>> origin/master
