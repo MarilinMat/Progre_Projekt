@@ -285,7 +285,7 @@ def main():
         else:
             mängulaud.mängupilt()
             pygame.display.update()
-            inGame = mängulaud.mäng_läbi(arvan)
+            inGame = mängulaud.mäng_läbi()
             mängulaud.valge_taust()
             mängulaud.uus_mängudata()
             arvan = 0
