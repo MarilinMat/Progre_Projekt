@@ -19,8 +19,6 @@ class lauamäng(object):
         key.paarid = [] 
         key.taustapilt = ''
         key.ekraan = pygame.display.set_mode((900,600))
-        #key.font =''
-        #key.clock = pygame.time
        
         for x in range(key.kõik_pildid):
             key.pildid.append(pygame.image.load(os.path.join('pildid/', 'pilt%d.png' % (x+1))))
@@ -28,8 +26,6 @@ class lauamäng(object):
             key.kaardikaas.append(pygame.image.load(os.path.join("pildid/kaart.jpg")))
        
         key.taustapilt = pygame.image.load(os.path.join('pildid/','taust.jpg'))
-        key.pealkiripilt = pygame.image.load(os.path.join('pildid/','pealkiri1.png'))
-        #key.font = pygame.font.SysFont('Constantia', 36)
 
     def uus_mängudata(key):
         del key.paarid[:]
@@ -52,9 +48,7 @@ class lauamäng(object):
 
     def mängusispilt(key):
         key.ekraan.blit(key.taustapilt,(0,0))
-        #skoor = key.font.render('Arvamisi: %d' % int(arvamisi/2), True, (255,255,255))
-        #key.ekraan.blit(skoor,(440,550))
-
+        
     def leitud_paarid(key):
         return len(key.paarid)
 
@@ -103,22 +97,22 @@ class lauamäng(object):
                 laius += 145
 
         else:
-            laius = 100 ## print row 1
+            laius = 100 
             for row1 in range(0, 5):
                 key.ekraan.blit(key.kaardikaas[row1],(laius,key.rida1))
                 laius += 145
-             ## print row 2
+         
             laius = 100
             for row2 in range(5, 10):
                 key.ekraan.blit(key.kaardikaas[row2],(laius,key.rida2))
                 laius += 145
 
-            laius = 100 ## print row 3
+            laius = 100
             for row3 in range(10, 15):
                 key.ekraan.blit(key.kaardikaas[row3],(laius,key.rida3))
                 laius += 145
 
-            laius = 100 ## print row 3
+            laius = 100 
             for row4 in range(15, 20):
                 key.ekraan.blit(key.kaardikaas[row4],(laius,key.rida4))
                 laius += 145
@@ -132,15 +126,7 @@ class lauamäng(object):
 
     def mäng_läbi(key):
         inGame = False
-        
-        #arvamisi = int(arvamisi/2)
-        #key.ekraan.blit(key.taust,(0,0))
-        #skoor = key.font.render('Arvamisi: %d' % (arvamisi), True, (255,255,255))
-        #jätka_mäng = key.font.render('Klikka kuskile',True, (255,255,255))
-        #key.ekraan.blit(skoor,(230,35))
-        #key.ekraan.blit(jätka_mäng,(90,515))
 
-        
     def valik(key,hiirx,hiiry):
         if((hiiry <= 190 ) and (hiiry >= 100)):
             if (hiirx >= 112) and (hiirx <= 227):
@@ -212,9 +198,21 @@ class lauamäng(object):
 
         return -1
 
+        
+    
+    def tekst(key,arvamisi,paare):
+        font=pygame.font.Font(os.path.join('pildid/','Game_Robot.ttf'),30)
+        font2=pygame.font.Font(os.path.join('pildid/','Game_Robot.ttf'),80)
+        font3=pygame.font.Font(os.path.join('pildid/', 'space_game_icons.ttf'),30)
+        #uus=font.render('UUESTI', True,(47,79,79))
+        skoor=font.render('Arvamisi: '+str(arvamisi//2), True,(47,79,79))
+        paariskoor=font.render('Paare: '+str(paare), True,(47,79,79))
+        pealkirjake=font2.render('MEMORY', True, (47,79,79))
+        key.ekraan.blit(skoor,(150,560))
+        key.ekraan.blit(paariskoor,(600,560))
+        key.ekraan.blit(pealkirjake,(290,12))
+        #key.ekraan.blit(uus,(610,560))
 
-    def valge_taust(key):
-        key.ekraan.fill((255,255,255,255))
 
 def main():
     
@@ -230,10 +228,7 @@ def main():
 
     while(not inGame):
         ekraan.blit(mängulaud.taustapilt,(0,0))
-        ekraan.blit(mängulaud.pealkiripilt,(240,1))
-        
-        #while inGame:
-            #DisplayIngameBackground(numGuesses, numPairs)
+        mängulaud.tekst(arvan,paar)
         
         if(paar < mängulaud.paare):
             if(mängulaud.leitud_paarid() < 1):
@@ -262,7 +257,7 @@ def main():
             for event in pygame.event.get():
                 if ((event.type == QUIT) or event.type == KEYUP and event.key == K_ESCAPE):
                     pygame.quit()
-                    sys.exit()                
+                    sys.exit()
 
                 if event.type == MOUSEMOTION :
                     hiirx, hiiry = event.pos
@@ -276,19 +271,20 @@ def main():
                         if valik1 > -1 :
                             mängulaud.lisa_valitud(valik1)
                             arvan += 1
+                       
                     else:
                         valik2 = mängulaud.valik(hiirx,hiiry)
 
                         if valik2 > -1:
                             mängulaud.lisa_valitud(valik2)
                             arvan += 1
+                       
      
         else:
             mängulaud.mängupilt()
             pygame.display.update()
             inGame = mängulaud.mäng_läbi()
             clock.wait(1500)
-            mängulaud.valge_taust()
             mängulaud.uus_mängudata()
             arvan = 0
             paar = 0
