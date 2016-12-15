@@ -1,6 +1,8 @@
 import random, pygame, sys, os
 from pygame.locals import *
 
+os.environ["SDL_VIDEO_CENTERED"] = '1'
+
 class lauamäng(object):
     def __init__(key):
         pygame.init()
@@ -221,12 +223,12 @@ def main():
     valik1, valik2 = -1, -1
     clock = pygame.time    
     mängulaud = lauamäng()
-    os.environ["SDL_VIDEO_CENTERED"] = '1'
     ekraan = mängulaud.ekraan
     pygame.display.set_caption("Memory")
     mängulaud.sega_kaardid()
 
     while(not inGame):
+        
         ekraan.blit(mängulaud.taustapilt,(0,0))
         mängulaud.tekst(arvan,paar)
         
